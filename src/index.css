@@ -23,6 +23,7 @@ input {
   background-color: grey;
   width: 50px;
   margin-right: 10px;
+  /* background-image: url('./images/mona-lisa-crop.jpg'); */
 }
 
 .colorModuleContainer {

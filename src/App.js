@@ -30,10 +30,16 @@ const App = () => {
     // consoleColor()
   }
 
+  const [alphaLevel, setAlphaLevel] = useState(Math.floor(Math.random() * 101))
+  const alphaChanger = e => {
+    setAlphaLevel(e.target.value)
+    // consoleColor()
+  }
   const setRandomColor = () => {
     setHueLevel(() => Math.floor(Math.random() * 360 + 1))
     setSaturationLevel(() => Math.floor(Math.random() * 101))
     setLightnessLevel(() => Math.floor(Math.random() * 101))
+    setAlphaLevel(() => Math.floor(Math.random() * 101))
     // consoleColor()
   }
 
@@ -82,6 +88,8 @@ const App = () => {
             saturationLevel +
             '%,' +
             lightnessLevel +
+            '%,' +
+            alphaLevel +
             '%)',
         }}
       >
@@ -93,6 +101,8 @@ const App = () => {
         <label className="saturationValue value">{saturationLevel}%</label>
         <br />
         <label className="lightnessValue value">{lightnessLevel}%</label>
+        <br />
+        <label className="alphaValue value">{alphaLevel}%</label>
       </section>
       <section className="colorPickerContainer">
         {/* ++ */}
@@ -101,8 +111,8 @@ const App = () => {
           colParLetter="H"
           onChangeHandler={hueChanger}
           colorParValue={hueLevel}
-          colorParMinValue="0"
-          colorParMaxValue="100"
+          colorParMinValue="1"
+          colorParMaxValue="360"
         />
         {/* <input
           type="range"
@@ -154,6 +164,15 @@ const App = () => {
           max="100"
         ></input>
           <label htmlFor="lightness">L</label> */}
+        <br />
+        <InputRange
+          colorParName="alpha"
+          colParLetter="A"
+          onChangeHandler={alphaChanger}
+          colorParValue={alphaLevel}
+          colorParMinValue="0"
+          colorParMaxValue="100"
+        />
       </section>
       <section className="buttonContainer randomizeContainer">
         <button className="randomize" onClick={setRandomColor}>
